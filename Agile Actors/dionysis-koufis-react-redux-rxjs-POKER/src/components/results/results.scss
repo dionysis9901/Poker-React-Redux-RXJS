@@ -1,0 +1,9 @@
+.stats {
+  margin: 10px 0 10px 0;
+  font-size: 18px;
+  &__winner {
+    &__mod {
+      color: rgb(0, 0, 0);
+    }
+  }
+}

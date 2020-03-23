@@ -1,0 +1,58 @@
+//Imports
+
+@import "components/pokerGame/PokerGame.scss";
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+//Variables
+
+$space-grey: rgba(255, 255, 255, 0.288);
+
+//Mixins
+
+@mixin btnLayout {
+  padding: 4px 10px 4px 10px;
+  font-size: 18px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: $space-grey;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+@mixin btnLayoutOnHover {
+  background-color: rgba(0, 0, 0, 0.452);
+  color: white;
+}
+
+//Global Settings
+
+html {
+  font-family: "Roboto", sans-serif;
+  background-color: $space-grey;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #477148;
+  color: white;
+}
+
+//Include Settings
+
+.login__btn,
+.pokerMain__reset,
+.pokerMain__toHome {
+  @include btnLayout;
+  margin-top: 5px;
+}
+
+.login__btn:hover,
+.pokerMain__reset:hover,
+.pokerMain__toHome:hover {
+  @include btnLayoutOnHover;
+}

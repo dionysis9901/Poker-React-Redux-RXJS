@@ -1,0 +1,17 @@
+.pokerMain {
+  height: 100vh;
+  padding: 30px;
+  text-align: center;
+
+  &__tittle,
+  &__vs {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  &__handsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

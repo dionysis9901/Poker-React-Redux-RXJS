@@ -1,0 +1,31 @@
+.pokerMain {
+  text-align: center;
+}
+
+.pokerMain__heading {
+  margin-bottom: 30px;
+}
+
+.pokerMain__tutorial {
+  margin-bottom: 20px;
+}
+
+.pokerMain__form {
+  margin-bottom: 20px;
+}
+
+.pokerMain__input {
+  text-indent: 3px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.pokerMain__footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+/*# sourceMappingURL=startingScreen.css.map */
