@@ -3,7 +3,7 @@ import PokerGame from "./PokerGame";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { newRound, goToHome } from "../actions";
+import { newRound, goToHome } from "../../actions";
 
 const withProps = Component => props => {
   const {
