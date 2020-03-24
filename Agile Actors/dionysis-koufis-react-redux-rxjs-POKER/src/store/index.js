@@ -7,7 +7,8 @@ import {
   deckIsReadyEpic,
   serveHandsToPlayersEpic,
   evaluateHandsEpic,
-  findTheWinnerEpic
+  findTheWinnerEpic,
+  resetGameEpic
 } from "../epics";
 
 const configureStore = () => {
@@ -16,7 +17,8 @@ const configureStore = () => {
     deckIsReadyEpic,
     serveHandsToPlayersEpic,
     evaluateHandsEpic,
-    findTheWinnerEpic
+    findTheWinnerEpic,
+    resetGameEpic
   ];
   const epics = combineEpics(...epicsArr);
   const epicMiddleware = createEpicMiddleware();

@@ -3,7 +3,7 @@ import PokerGame from "./PokerGame";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { newRound, goToHome } from "../../actions";
+import { reset, goToHome } from "../../actions";
 
 const withProps = Component => props => {
   const {
@@ -28,7 +28,7 @@ const withProps = Component => props => {
       resultPlayer={resultPlayer}
       resultCpu={resultCpu}
       winner={winner}
-      newRound={() => dispatch(newRound())}
+      newRound={() => dispatch(reset())}
       goToHome={() => dispatch(goToHome())}
     />
   );

@@ -2,7 +2,7 @@ import { mapTo, map } from "rxjs/operators";
 import { ofType } from "redux-observable";
 
 import {
-  deck,
+  createNewDeck,
   getPlayerHand,
   getCpuHand,
   PokerHandRate,
@@ -13,26 +13,36 @@ import {
 import {
   deckCreation,
   deckServed,
-  getHands,
+  evaluateNewHands,
   findWinner,
-  winnerFound
+  winnerFound,
+  settingGame
 } from "../actions";
 
-export const gamePreparationEpic = action$ =>
-  action$.pipe(ofType("SETTING_GAME"), mapTo(deckCreation(deck)));
+export const gamePreparationEpic = (action$, state$) =>
+  action$.pipe(
+    ofType("SETTING_GAME"),
+    map(() => (state$.value.deck = createNewDeck())),
+    mapTo(deckCreation())
+  );
 
 export const deckIsReadyEpic = action$ =>
   action$.pipe(ofType("DECK_CREATION"), mapTo(deckServed()));
 
-export const serveHandsToPlayersEpic = action$ =>
+export const serveHandsToPlayersEpic = (action$, state$) =>
   action$.pipe(
     ofType("DECK_SERVED"),
-    mapTo(getHands(getPlayerHand(), getCpuHand()))
+    map(() => {
+      state$.value.playerHand = getPlayerHand();
+      state$.value.cpuHand = getCpuHand();
+      return state$.value.playerHand, state$.value.cpuHand;
+    }),
+    mapTo(evaluateNewHands())
   );
 
 export const evaluateHandsEpic = (action$, state$) =>
   action$.pipe(
-    ofType("GET_HANDS"),
+    ofType("EVALUATE_NEW_HANDS"),
     map(() => {
       state$.value.resultPlayer = PokerHandRate(
         new rateCards(state$.value.playerHand)
@@ -57,3 +67,6 @@ export const findTheWinnerEpic = (action$, state$) =>
     }),
     mapTo(winnerFound())
   );
+
+export const resetGameEpic = action$ =>
+  action$.pipe(ofType("RESET"), mapTo(settingGame()));

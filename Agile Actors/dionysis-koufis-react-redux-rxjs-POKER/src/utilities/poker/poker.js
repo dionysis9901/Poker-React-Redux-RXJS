@@ -175,10 +175,11 @@ const myDeck = new generateDeck();
 
 //Exports
 
-const { deck, createNewDeck, getPlayerHand, getCpuHand } = myDeck;
+const { deck, getPlayerHand, getCpuHand, createNewDeck, shuffleDeck } = myDeck;
 export {
-  deck,
+  shuffleDeck,
   createNewDeck,
+  deck,
   getPlayerHand,
   getCpuHand,
   PokerHandRate,

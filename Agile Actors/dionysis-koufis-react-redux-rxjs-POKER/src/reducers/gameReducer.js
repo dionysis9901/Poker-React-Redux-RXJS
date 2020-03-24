@@ -30,18 +30,15 @@ const gameReducer = (state, { type, payload }) => {
 
     case "DECK_CREATION":
       return {
-        ...state,
-        deck: payload.deck
+        ...state
       };
 
     case "DECK_SERVED":
       return { ...state };
 
-    case "GET_HANDS":
+    case "EVALUATE_NEW_HANDS":
       return {
-        ...state,
-        playerHand: payload.playerHand,
-        cpuHand: payload.cpuHand
+        ...state
       };
 
     case "GO_TO_HOME":
@@ -57,6 +54,17 @@ const gameReducer = (state, { type, payload }) => {
 
     case "WINNER_FOUND":
       return { ...state };
+
+    case "RESET":
+      return {
+        ...state,
+        deck: null,
+        playerHand: null,
+        cpuHand: null,
+        resultPlayer: null,
+        resultCpu: null,
+        winner: null
+      };
 
     default:
       return initialState;

@@ -19,14 +19,12 @@ export const newRound = () => ({
   type: "NEW_ROUND"
 });
 
-export const deckCreation = deck => ({
-  type: "DECK_CREATION",
-  payload: { deck }
+export const deckCreation = () => ({
+  type: "DECK_CREATION"
 });
 
-export const getHands = (playerHand, cpuHand) => ({
-  type: "GET_HANDS",
-  payload: { playerHand, cpuHand }
+export const evaluateNewHands = () => ({
+  type: "EVALUATE_NEW_HANDS"
 });
 
 export const findWinner = () => ({
@@ -35,4 +33,8 @@ export const findWinner = () => ({
 
 export const winnerFound = () => ({
   type: "WINNER_FOUND"
+});
+
+export const reset = () => ({
+  type: "RESET"
 });
