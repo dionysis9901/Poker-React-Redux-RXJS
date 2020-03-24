@@ -24,7 +24,15 @@ export const deckCreation = deck => ({
   payload: { deck }
 });
 
-export const giveHands = (playerHand, cpuHand) => ({
-  type: "GIVE_HANDS",
+export const getHands = (playerHand, cpuHand) => ({
+  type: "GET_HANDS",
   payload: { playerHand, cpuHand }
+});
+
+export const findWinner = () => ({
+  type: "FIND_WINNER"
+});
+
+export const winnerFound = () => ({
+  type: "WINNER_FOUND"
 });

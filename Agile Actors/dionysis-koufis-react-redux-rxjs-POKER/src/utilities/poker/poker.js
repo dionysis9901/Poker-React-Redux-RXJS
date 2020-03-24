@@ -156,7 +156,7 @@ const assignWinnerPoints = res => {
   }
 };
 
-const findWinner = (resPlayer, resCpu) => {
+const winnerCalculate = (resPlayer, resCpu) => {
   let winner;
   let playerResult = assignWinnerPoints(resPlayer);
   let cpuResult = assignWinnerPoints(resCpu);
@@ -183,5 +183,5 @@ export {
   getCpuHand,
   PokerHandRate,
   rateCards,
-  findWinner
+  winnerCalculate
 };

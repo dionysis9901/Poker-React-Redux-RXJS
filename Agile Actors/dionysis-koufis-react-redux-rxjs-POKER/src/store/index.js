@@ -2,10 +2,22 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 import gameReducer from "../reducers";
 
-import { gamePreparation, deckIsReady, serveHandsToPlayers } from "../epics"; // E  P I C S   H E R E
+import {
+  gamePreparationEpic,
+  deckIsReadyEpic,
+  serveHandsToPlayersEpic,
+  evaluateHandsEpic,
+  findTheWinnerEpic
+} from "../epics";
 
 const configureStore = () => {
-  const epicsArr = [gamePreparation, deckIsReady, serveHandsToPlayers]; // epics here in Array
+  const epicsArr = [
+    gamePreparationEpic,
+    deckIsReadyEpic,
+    serveHandsToPlayersEpic,
+    evaluateHandsEpic,
+    findTheWinnerEpic
+  ];
   const epics = combineEpics(...epicsArr);
   const epicMiddleware = createEpicMiddleware();
   const middleware = [epicMiddleware];

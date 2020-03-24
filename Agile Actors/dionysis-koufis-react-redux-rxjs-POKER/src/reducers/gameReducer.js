@@ -1,13 +1,3 @@
-import {
-  deck,
-  getPlayerHand,
-  getCpuHand,
-  PokerHandRate,
-  rateCards,
-  createNewDeck,
-  findWinner
-} from "../utilities/poker/poker.js";
-
 const initialState = {
   name: null || "You",
   gameOn: false,
@@ -15,12 +5,9 @@ const initialState = {
   deck: null,
   playerHand: null,
   cpuHand: null,
-  resultPlayer: PokerHandRate(new rateCards(getPlayerHand())),
-  resultCpu: PokerHandRate(new rateCards(getCpuHand())),
-  winner: findWinner(
-    PokerHandRate(new rateCards(getPlayerHand())),
-    PokerHandRate(new rateCards(getCpuHand()))
-  )
+  resultPlayer: null,
+  resultCpu: null,
+  winner: null
 };
 
 const gameReducer = (state, { type, payload }) => {
@@ -50,7 +37,7 @@ const gameReducer = (state, { type, payload }) => {
     case "DECK_SERVED":
       return { ...state };
 
-    case "GIVE_HANDS":
+    case "GET_HANDS":
       return {
         ...state,
         playerHand: payload.playerHand,
@@ -64,19 +51,13 @@ const gameReducer = (state, { type, payload }) => {
         gameOn: false,
         name: null || "You"
       };
-    // case "NEW_ROUND":
-    //   return {
-    //     ...state,
-    //     deck: createNewDeck(),
-    //     playerHand: getPlayerHand(),
-    //     cpuHand: getCpuHand(),
-    //     resultPlayer: PokerHandRate(new rateCards(getPlayerHand())),
-    //     resultCpu: PokerHandRate(new rateCards(getCpuHand())),
-    //     winner: findWinner(
-    //       PokerHandRate(new rateCards(getPlayerHand())),
-    //       PokerHandRate(new rateCards(getCpuHand()))
-    //     )
-    //   };
+
+    case "FIND_WINNER":
+      return { ...state };
+
+    case "WINNER_FOUND":
+      return { ...state };
+
     default:
       return initialState;
   }
