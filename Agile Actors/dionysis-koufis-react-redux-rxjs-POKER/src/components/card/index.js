@@ -1,3 +1,3 @@
-import Card from "./Card";
+import { OpenCard, HiddenCard } from "./Card";
 
-export default Card;
+export { OpenCard, HiddenCard };

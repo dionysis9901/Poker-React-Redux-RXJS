@@ -35,7 +35,6 @@ const gameReducer = (state = initialState, { type, payload }) => {
       return { ...state };
 
     case "EVALUATE_NEW_HANDS":
-      console.log(payload);
       return {
         ...state,
         playerHand: payload.playerHand,

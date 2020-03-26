@@ -1,3 +1,3 @@
-import Hand from "./Hand";
+import { PlayerHand, CpuHand } from "./Hand";
 
-export default Hand;
+export { PlayerHand, CpuHand };

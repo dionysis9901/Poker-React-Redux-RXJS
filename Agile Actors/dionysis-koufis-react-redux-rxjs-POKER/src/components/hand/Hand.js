@@ -1,14 +1,14 @@
 import React from "react";
-import Card from "../card";
+import { OpenCard, HiddenCard } from "../card";
 
-const Hand = ({ hand, result }) => (
+const PlayerHand = ({ hand, result }) => (
   <div>
     <div className="handRow">
       <div className="playingCards">
         <ul className="table">
           {hand.map(({ rank, suit }, index) => (
             <li key={index}>
-              <Card rank={rank} suit={suit} />
+              <OpenCard rank={rank} suit={suit} />
             </li>
           ))}
         </ul>
@@ -18,4 +18,21 @@ const Hand = ({ hand, result }) => (
   </div>
 );
 
-export default Hand;
+const CpuHand = ({ hand, result }) => (
+  <div>
+    <div className="handRow">
+      <div className="playingCards">
+        <ul className="table">
+          {hand.map(({ rank, suit }, index) => (
+            <li key={index}>
+              <HiddenCard rank={rank} suit={suit} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p>{result}</p>
+    </div>
+  </div>
+);
+
+export { PlayerHand, CpuHand };

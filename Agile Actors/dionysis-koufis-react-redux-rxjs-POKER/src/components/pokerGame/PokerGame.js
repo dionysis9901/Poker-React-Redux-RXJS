@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../login";
 import Results from "../results";
-import Hand from "../hand";
+import { PlayerHand, CpuHand } from "../hand";
 
 import "./pokerGame.scss";
 
@@ -22,11 +22,18 @@ const PokerGame = ({
     return (
       <div className="pokerMain">
         <h1 className="pokerMain__tittle">Poker</h1>
-        <p className="pokerMain__vs">{name} VS CPU</p>
-
         <div className="pokerMain__handsContainer">
-          <Hand hand={playerHand} />
-          <Hand hand={cpuHand} />
+          <div className="pokerMain__box">
+            <p className="pokerMain__box__player">{name}</p>
+          </div>
+
+          <PlayerHand hand={playerHand} />
+
+          <div className="pokerMain__box">
+            <p className="pokerMain__box__host">Host</p>
+          </div>
+
+          <CpuHand hand={cpuHand} />
 
           <Results
             playerResult={resultPlayer}
