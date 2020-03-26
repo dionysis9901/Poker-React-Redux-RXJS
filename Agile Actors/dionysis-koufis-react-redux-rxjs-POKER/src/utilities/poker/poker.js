@@ -47,7 +47,8 @@ class generateDeck {
         var card = {
           rank: this.ranks[x].rank,
           weight: this.ranks[x].weight,
-          suit: this.suits[i]
+          suit: this.suits[i],
+          selected: false
         };
         this.deck.push(card);
       }

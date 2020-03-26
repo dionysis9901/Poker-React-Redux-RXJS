@@ -52,6 +52,5 @@ export const findTheWinnerEpic = (action$, state$) =>
 export const resetGameEpic = action$ =>
   action$.ofType("RESET").pipe(mapTo(settingGame()));
 
-//component player,host
 //player (properties name)
 // liturgies:bid,cardsChange,winner

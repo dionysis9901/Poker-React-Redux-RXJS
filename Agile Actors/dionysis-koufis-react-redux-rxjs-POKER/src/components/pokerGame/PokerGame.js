@@ -1,7 +1,8 @@
 import React from "react";
 import Login from "../login";
 import Results from "../results";
-import { PlayerHand, CpuHand } from "../hand";
+import PlayerHand from "../playerHand";
+import CpuHand from "../cpuHand";
 
 import "./pokerGame.scss";
 
