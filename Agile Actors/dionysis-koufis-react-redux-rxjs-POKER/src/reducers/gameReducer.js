@@ -10,10 +10,7 @@ const initialState = {
   winner: null
 };
 
-const gameReducer = (state, { type, payload }) => {
-  if (typeof state === "undefined") {
-    return initialState;
-  }
+const gameReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "GET_USER_NAME":
       return {

@@ -18,16 +18,16 @@ import {
   settingGame
 } from "../actions";
 
-export const gamePreparationEpic = (action$, state$) =>
-  action$.ofType("SETTING_GAME").pipe(mapTo(deckCreation(createNewDeck())));
+export const gamePreparationEpic = action$ =>
+  action$.ofType("SETTING_GAME").pipe(map(() => deckCreation(createNewDeck())));
 
 export const deckIsReadyEpic = action$ =>
-  action$.ofType("DECK_CREATION").pipe(mapTo(deckServed()));
+  action$.ofType("DECK_CREATION").pipe(map(() => deckServed()));
 
-export const serveHandsToPlayersEpic = (action$, state$) =>
+export const serveHandsToPlayersEpic = action$ =>
   action$
     .ofType("DECK_SERVED")
-    .pipe(mapTo(evaluateNewHands(getPlayerHand(), getCpuHand())));
+    .pipe(map(() => evaluateNewHands(getPlayerHand(), getCpuHand())));
 
 export const evaluateHandsEpic = (action$, state$) =>
   action$.ofType("EVALUATE_NEW_HANDS").pipe(
@@ -51,7 +51,3 @@ export const findTheWinnerEpic = (action$, state$) =>
 
 export const resetGameEpic = action$ =>
   action$.ofType("RESET").pipe(mapTo(settingGame()));
-
-//component player,host
-//player (properties name)
-// liturgies:bid,cardsChange,winner
