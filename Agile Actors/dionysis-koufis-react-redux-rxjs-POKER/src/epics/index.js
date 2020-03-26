@@ -1,5 +1,4 @@
 import { mapTo, map } from "rxjs/operators";
-import { ofType } from "redux-observable";
 
 import {
   createNewDeck,
@@ -20,53 +19,39 @@ import {
 } from "../actions";
 
 export const gamePreparationEpic = (action$, state$) =>
-  action$.pipe(
-    ofType("SETTING_GAME"),
-    map(() => (state$.value.deck = createNewDeck())),
-    mapTo(deckCreation())
-  );
+  action$.ofType("SETTING_GAME").pipe(mapTo(deckCreation(createNewDeck())));
 
 export const deckIsReadyEpic = action$ =>
-  action$.pipe(ofType("DECK_CREATION"), mapTo(deckServed()));
+  action$.ofType("DECK_CREATION").pipe(mapTo(deckServed()));
 
 export const serveHandsToPlayersEpic = (action$, state$) =>
-  action$.pipe(
-    ofType("DECK_SERVED"),
-    map(() => {
-      state$.value.playerHand = getPlayerHand();
-      state$.value.cpuHand = getCpuHand();
-      return state$.value.playerHand, state$.value.cpuHand;
-    }),
-    mapTo(evaluateNewHands())
-  );
+  action$
+    .ofType("DECK_SERVED")
+    .pipe(mapTo(evaluateNewHands(getPlayerHand(), getCpuHand())));
 
 export const evaluateHandsEpic = (action$, state$) =>
-  action$.pipe(
-    ofType("EVALUATE_NEW_HANDS"),
+  action$.ofType("EVALUATE_NEW_HANDS").pipe(
     map(() => {
-      state$.value.resultPlayer = PokerHandRate(
-        new rateCards(state$.value.playerHand)
-      );
-      state$.value.resultCpu = PokerHandRate(
-        new rateCards(state$.value.cpuHand)
-      );
-      return state$.value.resultPlayer, state$.value.resultCpu;
-    }),
-    mapTo(findWinner())
+      const playerCombo = PokerHandRate(new rateCards(state$.value.playerHand));
+      const cpuCombo = PokerHandRate(new rateCards(state$.value.cpuHand));
+      return findWinner(playerCombo, cpuCombo);
+    })
   );
 
 export const findTheWinnerEpic = (action$, state$) =>
-  action$.pipe(
-    ofType("FIND_WINNER"),
+  action$.ofType("FIND_WINNER").pipe(
     map(() => {
-      state$.value.winner = winnerCalculate(
+      const winner = winnerCalculate(
         state$.value.resultPlayer,
         state$.value.resultCpu
       );
-      return state$.value.winner;
-    }),
-    mapTo(winnerFound())
+      return winnerFound(winner);
+    })
   );
 
 export const resetGameEpic = action$ =>
-  action$.pipe(ofType("RESET"), mapTo(settingGame()));
+  action$.ofType("RESET").pipe(mapTo(settingGame()));
+
+//component player,host
+//player (properties name)
+// liturgies:bid,cardsChange,winner

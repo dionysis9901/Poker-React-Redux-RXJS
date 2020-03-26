@@ -30,15 +30,19 @@ const gameReducer = (state, { type, payload }) => {
 
     case "DECK_CREATION":
       return {
-        ...state
+        ...state,
+        deck: payload.deck
       };
 
     case "DECK_SERVED":
       return { ...state };
 
     case "EVALUATE_NEW_HANDS":
+      console.log(payload);
       return {
-        ...state
+        ...state,
+        playerHand: payload.playerHand,
+        cpuHand: payload.cpuHand
       };
 
     case "GO_TO_HOME":
@@ -50,10 +54,14 @@ const gameReducer = (state, { type, payload }) => {
       };
 
     case "FIND_WINNER":
-      return { ...state };
+      return {
+        ...state,
+        resultPlayer: payload.playerCombo,
+        resultCpu: payload.cpuCombo
+      };
 
     case "WINNER_FOUND":
-      return { ...state };
+      return { ...state, winner: payload.winner };
 
     case "RESET":
       return {
