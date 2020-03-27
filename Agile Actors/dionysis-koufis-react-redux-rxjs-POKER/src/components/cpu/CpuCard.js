@@ -1,9 +1,9 @@
 import React from "react";
-import "./styles/cards.css";
-import "./styles/cards.css.map";
+import "../../styles/cards.css";
+import "../../styles/cards.css.map";
 
-const Card = ({ rank, suit }) => (
-  <div className={`card rank-${rank} ${suit} href="#"`}>
+const CpuCard = ({ rank, suit }) => (
+  <div className={`card back href="#"`}>
     <span className="rank">{rank.toUpperCase()}</span>
     <span
       className="suit"
@@ -12,4 +12,4 @@ const Card = ({ rank, suit }) => (
   </div>
 );
 
-export default Card;
+export default CpuCard;
