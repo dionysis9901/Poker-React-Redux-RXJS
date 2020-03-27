@@ -24,8 +24,8 @@ export const deckCreation = deck => ({
   payload: { deck }
 });
 
-export const evaluateNewHands = (playerHand, cpuHand) => ({
-  type: "EVALUATE_NEW_HANDS",
+export const giveCardsToPlayers = (playerHand, cpuHand) => ({
+  type: "GIVE_CARDS_TO_PLAYERS",
   payload: {
     playerHand,
     cpuHand

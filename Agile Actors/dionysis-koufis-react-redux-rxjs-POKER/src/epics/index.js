@@ -12,7 +12,7 @@ import {
 import {
   deckCreation,
   deckServed,
-  evaluateNewHands,
+  giveCardsToPlayers,
   findWinner,
   winnerFound,
   settingGame
@@ -27,10 +27,10 @@ export const deckIsReadyEpic = action$ =>
 export const serveHandsToPlayersEpic = action$ =>
   action$
     .ofType("DECK_SERVED")
-    .pipe(map(() => evaluateNewHands(getPlayerHand(), getCpuHand())));
+    .pipe(map(() => giveCardsToPlayers(getPlayerHand(), getCpuHand())));
 
 export const evaluateHandsEpic = (action$, state$) =>
-  action$.ofType("EVALUATE_NEW_HANDS").pipe(
+  action$.ofType("GIVE_CARDS_TO_PLAYERS").pipe(
     map(() => {
       const playerCombo = PokerHandRate(new rateCards(state$.value.playerHand));
       const cpuCombo = PokerHandRate(new rateCards(state$.value.cpuHand));

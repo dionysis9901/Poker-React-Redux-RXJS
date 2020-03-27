@@ -34,8 +34,7 @@ const gameReducer = (state = initialState, { type, payload }) => {
     case "DECK_SERVED":
       return { ...state };
 
-    case "EVALUATE_NEW_HANDS":
-      console.log(payload);
+    case "GIVE_CARDS_TO_PLAYERS":
       return {
         ...state,
         playerHand: payload.playerHand,
