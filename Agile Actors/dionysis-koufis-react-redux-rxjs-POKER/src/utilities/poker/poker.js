@@ -57,6 +57,10 @@ class generateDeck {
   }
 
   shuffleDeck() {
+    this.deck = this.deck.map((card, index) => {
+      card.index = index;
+      return card;
+    });
     for (let i = this.deck.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];

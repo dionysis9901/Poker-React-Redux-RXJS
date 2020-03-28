@@ -1,3 +1,5 @@
+import { cardSelected } from "../actions";
+
 const initialState = {
   name: null || "You",
   gameOn: false,
@@ -7,7 +9,8 @@ const initialState = {
   cpuHand: null,
   resultPlayer: null,
   resultCpu: null,
-  winner: null
+  winner: null,
+  cardSelected: []
 };
 
 const gameReducer = (state = initialState, { type, payload }) => {
@@ -69,6 +72,30 @@ const gameReducer = (state = initialState, { type, payload }) => {
         resultCpu: null,
         winner: null
       };
+
+    case "CARD_SELECTED":
+      return {
+        ...state
+      };
+
+    case "ADD_OR_REMOVE_ITEM":
+      if (!payload.newCard[0].selected) {
+        payload.newCard[0].selected = !payload.newCard[0].selected;
+        payload.newCard[0].id = payload.id; 
+
+        return {
+          ...state,
+          cardSelected: [...state.cardSelected, payload.newCard[0]]
+        };
+      } else if (payload.newCard[0].selected) {
+        payload.newCard[0].selected = !payload.newCard[0].selected;
+        return {
+          ...state,
+          cardSelected: state.cardSelected.filter(
+            card => payload.newCard[0].id !== card.id
+          )
+        };
+      }
 
     default:
       return initialState;

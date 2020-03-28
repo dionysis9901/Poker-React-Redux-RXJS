@@ -1,14 +1,20 @@
 import React from "react";
 import PlayerCard from "./PlayerCard";
 
-const Player = ({ hand }) => (
+const Player = ({ hand, cardSelected }) => (
   <div>
     <div className="handRow">
       <div className="playingCards">
         <ul className="table">
-          {hand.map(({ rank, suit, selected }, index) => (
+          {hand.map(({ rank, suit, selected, index }) => (
             <li key={index}>
-              <PlayerCard rank={rank} suit={suit} selected={selected} />
+              <PlayerCard
+                hand={hand}
+                rank={rank}
+                suit={suit}
+                cardSelected={cardSelected}
+                selected={selected}
+              />
             </li>
           ))}
         </ul>

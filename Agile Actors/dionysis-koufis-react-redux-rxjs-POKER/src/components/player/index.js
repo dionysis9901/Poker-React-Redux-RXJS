@@ -1,3 +1,4 @@
-import PlayerHand from "./Player";
+import Player from "./Player";
+import withProps from "./withProps";
 
-export default PlayerHand;
+export default withProps(Player);

@@ -27,14 +27,14 @@ const PokerGame = ({
           <div className="pokerMain__box">
             <p className="pokerMain__box__player">{name}</p>
           </div>
-
-          <Player hand={playerHand} />
+          {/* PLAYER */}
+          <Player />
 
           <div className="pokerMain__box">
             <p className="pokerMain__box__host">Host</p>
           </div>
-
-          <Cpu hand={cpuHand} />
+          {/* CPU */}
+          <Cpu />
 
           <Results
             playerResult={resultPlayer}

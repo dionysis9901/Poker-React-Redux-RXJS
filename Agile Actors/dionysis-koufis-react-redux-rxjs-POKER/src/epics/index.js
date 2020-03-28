@@ -15,8 +15,10 @@ import {
   giveCardsToPlayers,
   findWinner,
   winnerFound,
-  settingGame
+  settingGame,
+  addOrRemoveItem
 } from "../actions";
+import { ActionsObservable } from "redux-observable";
 
 export const gamePreparationEpic = action$ =>
   action$.ofType("SETTING_GAME").pipe(map(() => deckCreation(createNewDeck())));
@@ -52,5 +54,18 @@ export const findTheWinnerEpic = (action$, state$) =>
 export const resetGameEpic = action$ =>
   action$.ofType("RESET").pipe(mapTo(settingGame()));
 
+export const itemIsSelected = (action$, state$) =>
+  action$.ofType("CARD_SELECTED").pipe(
+    map(action => {
+      const newCard = state$.value.playerHand.filter(card => {
+        const id = `c-${card.rank}${card.suit.slice(0, 1).toUpperCase()}`;
+        if (action.payload.id === id) {
+          return card;
+        }
+      });
+
+      return addOrRemoveItem(newCard, action.payload.id);
+    })
+  );
 //player (properties name)
 // liturgies:bid,cardsChange,winner

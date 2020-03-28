@@ -1,3 +1,4 @@
 import Cpu from "./Cpu";
+import withProps from "./withProps";
 
-export default Cpu;
+export default withProps(Cpu);

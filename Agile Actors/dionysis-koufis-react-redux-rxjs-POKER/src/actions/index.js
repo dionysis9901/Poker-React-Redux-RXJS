@@ -50,3 +50,16 @@ export const winnerFound = winner => ({
 export const reset = () => ({
   type: "RESET"
 });
+
+export const cardSelected = (selected, id) => ({
+  type: "CARD_SELECTED",
+  payload: {
+    selected,
+    id
+  }
+});
+
+export const addOrRemoveItem = (newCard, id) => ({
+  type: "ADD_OR_REMOVE_ITEM",
+  payload: { newCard, id }
+});
