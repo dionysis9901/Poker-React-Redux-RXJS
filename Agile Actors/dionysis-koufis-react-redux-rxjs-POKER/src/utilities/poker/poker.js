@@ -38,6 +38,7 @@ class generateDeck {
     this.createNewDeck = this.createNewDeck.bind(this);
     this.getPlayerHand = this.getPlayerHand.bind(this);
     this.getCpuHand = this.getCpuHand.bind(this);
+    this.getCardsByNumber = this.getCardsByNumber.bind(this);
     this.createNewDeck();
   }
 
@@ -74,7 +75,15 @@ class generateDeck {
 
   getCpuHand() {
     this.cpuHand = this.deck.slice(41, 46);
+    this.deck = this.deck.slice(0, 42);
+    // Slicing The Deck After Both Players Picked Their Hand
     return this.cpuHand;
+  }
+
+  getCardsByNumber(numberOfCards) {
+    const result = this.deck.slice(0, numberOfCards);
+    this.deck = this.deck.slice(numberOfCards, 42);
+    return result;
   }
 
   createNewDeck() {
@@ -180,9 +189,17 @@ const myDeck = new generateDeck();
 
 //Exports
 
-const { deck, getPlayerHand, getCpuHand, createNewDeck, shuffleDeck } = myDeck;
+const {
+  deck,
+  getPlayerHand,
+  getCpuHand,
+  createNewDeck,
+  shuffleDeck,
+  getCardsByNumber
+} = myDeck;
 export {
   shuffleDeck,
+  getCardsByNumber,
   createNewDeck,
   deck,
   getPlayerHand,

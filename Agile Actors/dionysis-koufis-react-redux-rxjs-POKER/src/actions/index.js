@@ -59,7 +59,18 @@ export const cardSelected = (selected, id) => ({
   }
 });
 
-export const addOrRemoveItem = (newCard, id) => ({
-  type: "ADD_OR_REMOVE_ITEM",
+export const addOrRemoveCard = (newCard, id) => ({
+  type: "ADD_OR_REMOVE_CARD",
   payload: { newCard, id }
+});
+
+export const changeCards = () => ({
+  type: "CHANGE_CARDS"
+});
+
+export const fillPlayerHandWithCards = replacedCards => ({
+  type: "FILL_PLAYER_HAND_WITH_CARDS",
+  payload: {
+    replacedCards
+  }
 });

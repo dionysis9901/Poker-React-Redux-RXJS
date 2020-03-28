@@ -9,13 +9,13 @@ import "./pokerGame.scss";
 const PokerGame = ({
   name,
   homePage,
-  playerHand,
-  cpuHand,
   resultPlayer,
   resultCpu,
   winner,
   newRound,
-  goToHome
+  goToHome,
+  cardsSelected,
+  changeCards
 }) => {
   if (homePage) {
     return <Login />;
@@ -29,6 +29,8 @@ const PokerGame = ({
           </div>
           {/* PLAYER */}
           <Player />
+          <p>Cards That are Selected are {cardsSelected.length}</p>
+          <button onClick={changeCards}>Change Cards</button>
 
           <div className="pokerMain__box">
             <p className="pokerMain__box__host">Host</p>

@@ -1,5 +1,3 @@
-import { cardSelected } from "../actions";
-
 const initialState = {
   name: null || "You",
   gameOn: false,
@@ -10,7 +8,7 @@ const initialState = {
   resultPlayer: null,
   resultCpu: null,
   winner: null,
-  cardSelected: []
+  cardsSelected: []
 };
 
 const gameReducer = (state = initialState, { type, payload }) => {
@@ -78,24 +76,41 @@ const gameReducer = (state = initialState, { type, payload }) => {
         ...state
       };
 
-    case "ADD_OR_REMOVE_ITEM":
+    case "ADD_OR_REMOVE_CARD":
       if (!payload.newCard[0].selected) {
         payload.newCard[0].selected = !payload.newCard[0].selected;
-        payload.newCard[0].id = payload.id; 
+        payload.newCard[0].id = payload.id;
 
         return {
           ...state,
-          cardSelected: [...state.cardSelected, payload.newCard[0]]
+          cardsSelected: [...state.cardsSelected, payload.newCard[0]]
         };
       } else if (payload.newCard[0].selected) {
         payload.newCard[0].selected = !payload.newCard[0].selected;
         return {
           ...state,
-          cardSelected: state.cardSelected.filter(
+          cardsSelected: state.cardsSelected.filter(
             card => payload.newCard[0].id !== card.id
           )
         };
       }
+
+    case "CHANGE_CARDS":
+      return {
+        ...state,
+        playerHand: state.playerHand.filter(card => card.selected !== true),
+        cardsSelected: []
+      };
+
+    case "FILL_PLAYER_HAND_WITH_CARDS": {
+      console.log(payload);
+      console.log(payload.replacedCards);
+
+      return {
+        ...state,
+        playerHand: [...payload.replacedCards, ...state.playerHand]
+      };
+    }
 
     default:
       return initialState;

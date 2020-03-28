@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/cards.css";
 import "../../styles/cards.css.map";
 
-const PlayerCard = ({ rank, suit, selected, something, cardSelected }) => (
+const PlayerCard = ({ rank, suit, selected, cardSelected }) => (
   <label
     htmlFor={`c-${rank}${suit.slice(0, 1).toUpperCase()}`}
     className={`card rank-${rank} ${suit}`}
@@ -22,5 +22,7 @@ const PlayerCard = ({ rank, suit, selected, something, cardSelected }) => (
     />
   </label>
 );
+//tsekarei giati kathe karta
+//den pernei to ID
 
 export default PlayerCard;

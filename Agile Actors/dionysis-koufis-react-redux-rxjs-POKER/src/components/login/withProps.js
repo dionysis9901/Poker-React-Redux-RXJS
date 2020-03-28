@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 const withProps = Component => props => {
   const { name, gameOn } = useSelector(state => state);
   const dispatch = useDispatch();
-  // dispatch(settingGame());
   return (
     <Login
       name={name}
