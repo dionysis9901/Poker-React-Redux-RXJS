@@ -74,3 +74,13 @@ export const fillPlayerHandWithCards = replacedCards => ({
     replacedCards
   }
 });
+
+export const playerBid = money => ({
+  type: "PLAYER_BID",
+  payload: { money }
+});
+
+export const cpuBid = money => ({
+  type: "CPU_BID",
+  payload: { money }
+});

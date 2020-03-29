@@ -40,19 +40,25 @@ html {
 body {
   background-color: #477148;
   color: white;
+  height: 130vh;
 }
 
 //Include Settings
 
 .login__btn,
 .pokerMain__reset,
-.pokerMain__toHome {
+.pokerMain__toHome,
+.console__btnBid,
+.pokerMain__console__btnChange {
   @include btnLayout;
-  margin-top: 5px;
+  margin: 10px 10px;
+  width: auto;
 }
 
-.login__btn:hover,
-.pokerMain__reset:hover,
-.pokerMain__toHome:hover {
+.login__btn:hover:enabled,
+.pokerMain__reset:hover:enabled,
+.pokerMain__toHome:hover:enabled,
+.console__btnBid:hover:enabled,
+.pokerMain__console__btnChange:hover:enabled {
   @include btnLayoutOnHover;
 }

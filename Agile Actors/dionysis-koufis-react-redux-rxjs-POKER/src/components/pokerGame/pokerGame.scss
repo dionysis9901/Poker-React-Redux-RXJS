@@ -2,11 +2,30 @@
   height: 100vh;
   padding: 30px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
-  &__tittle {
-    text-align: center;
-    margin-bottom: 5px;
+  &__console {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.363);
+    border: 1px solid rgb(0, 3, 1);
+    border-radius: 10px;
+    width: 300px;
+    height: 90%;
+    margin-right: 100px;
+    box-shadow: 4px -4px 9px 3px rgba(0, 0, 0, 0.75);
+    &__tittle {
+      margin: 10px auto;
+      color: rgb(0, 255, 13);
+    }
+    &__btnBid {
+      margin-right: 1px;
+    }
   }
+
   &__box {
     width: 60%;
     margin: 15px auto;
@@ -21,7 +40,24 @@
   &__handsContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    margin-right: 50px;
+  }
+
+  .colored {
+    color: rgb(0, 255, 42);
+  }
+
+  .cardText {
+    display: inline;
+  }
+
+  .console__bidText {
+    display: inline;
+  }
+
+  .console__btnBid:disabled {
+    background: #84a07400;
   }
 }

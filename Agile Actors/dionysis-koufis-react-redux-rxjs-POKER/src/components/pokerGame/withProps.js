@@ -3,7 +3,7 @@ import PokerGame from "./PokerGame";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { reset, goToHome, changeCards } from "../../actions";
+import { reset, goToHome, changeCards, playerBid } from "../../actions";
 
 const withProps = Component => props => {
   const {
@@ -13,7 +13,10 @@ const withProps = Component => props => {
     resultPlayer,
     resultCpu,
     winner,
-    cardsSelected
+    cardsSelected,
+    playerMoney,
+    cpuMoney,
+    activeBid
   } = useSelector(state => state);
   const dispatch = useDispatch();
 
@@ -26,9 +29,13 @@ const withProps = Component => props => {
       resultCpu={resultCpu}
       winner={winner}
       cardsSelected={cardsSelected}
+      playerMoney={playerMoney}
+      cpuMoney={cpuMoney}
       changeCards={() => dispatch(changeCards())}
       newRound={() => dispatch(reset())}
       goToHome={() => dispatch(goToHome())}
+      bidMoney={money => dispatch(playerBid(money))}
+      activeBid={activeBid}
     />
   );
 };

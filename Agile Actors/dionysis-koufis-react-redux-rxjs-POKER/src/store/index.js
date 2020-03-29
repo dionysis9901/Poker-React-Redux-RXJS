@@ -9,8 +9,9 @@ import {
   evaluateHandsEpic,
   findTheWinnerEpic,
   resetGameEpic,
-  cardIsSelected,
-  fillCards
+  cardIsSelectedEpic,
+  fillCardsEpic,
+  cpuBidEpic
 } from "../epics";
 
 const configureStore = () => {
@@ -21,8 +22,9 @@ const configureStore = () => {
     evaluateHandsEpic,
     findTheWinnerEpic,
     resetGameEpic,
-    cardIsSelected,
-    fillCards
+    cardIsSelectedEpic,
+    fillCardsEpic,
+    cpuBidEpic
   ];
   const epics = combineEpics(...epicsArr);
   const epicMiddleware = createEpicMiddleware();

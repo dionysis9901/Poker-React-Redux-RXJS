@@ -5,6 +5,9 @@ const initialState = {
   deck: null,
   playerHand: null,
   cpuHand: null,
+  playerMoney: 200,
+  cpuMoney: 200,
+  activeBid: 0,
   resultPlayer: null,
   resultCpu: null,
   winner: null,
@@ -63,12 +66,18 @@ const gameReducer = (state = initialState, { type, payload }) => {
     case "RESET":
       return {
         ...state,
+        gameOn: false,
+        homePage: true,
         deck: null,
         playerHand: null,
         cpuHand: null,
+        playerMoney: 200,
+        cpuMoney: 200,
+        activeBid: 0,
         resultPlayer: null,
         resultCpu: null,
-        winner: null
+        winner: null,
+        cardsSelected: []
       };
 
     case "CARD_SELECTED":
@@ -103,12 +112,25 @@ const gameReducer = (state = initialState, { type, payload }) => {
       };
 
     case "FILL_PLAYER_HAND_WITH_CARDS": {
-      console.log(payload);
-      console.log(payload.replacedCards);
-
       return {
         ...state,
         playerHand: [...payload.replacedCards, ...state.playerHand]
+      };
+    }
+
+    case "PLAYER_BID": {
+      return {
+        ...state,
+        playerMoney: state.playerMoney - payload.money,
+        activeBid: state.activeBid + payload.money
+      };
+    }
+
+    case "CPU_BID": {
+      return {
+        ...state,
+        cpuMoney: state.cpuMoney - payload.money,
+        activeBid: state.activeBid + payload.money
       };
     }
 
